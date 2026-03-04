@@ -64,7 +64,7 @@ export default function Navbar() {
       {/* ── Nav Links Right (Desktop) ── */}
       <ul className="hidden md:flex items-center gap-8 list-none m-0 p-0">
         {[
-          { label: "गृहपृष्ठ",        to: "/" },
+          { label: "गृहपृष्ठ",        to: "/home" },
           { label: "मतदान गर्नुहोस्", to: "/vote" },
           { label: "कसरी मतदान गर्ने?", to: "/how-to" },
           { label: "परिणाम",           to: "/results" },
