@@ -1,9 +1,18 @@
-import React from 'react'
+import { useState } from "react";
+import IntroPage from "./components/IntroPage";
 
-const App = () => {
+export default function App() {
+  const [showIntro, setShowIntro] = useState(true);
+
   return (
-    <div>hello word</div>
-  )
+    <div>
+      {showIntro ? (
+        <IntroPage onEnter={() => setShowIntro(false)} />
+      ) : (
+        <div className="text-white text-center mt-20 text-2xl">
+          🗳️ यहाँ तपाईंको Main Page आउँछ
+        </div>
+      )}
+    </div>
+  );
 }
-
-export default App
