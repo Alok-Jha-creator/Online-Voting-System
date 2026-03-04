@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import nepalFlag from "../assets/nepal flag.png";
 
 const particles = Array.from({ length: 25 }, (_, i) => ({
   id: i,
@@ -64,34 +65,7 @@ export default function IntroPage({ onEnter }) {
       </div>
 
       {/* ── Emblem ── */}
-      <svg
-        viewBox="0 0 100 100"
-        className="mb-6 z-10"
-        style={{
-          width: 130,
-          height: 130,
-          filter: "drop-shadow(0 0 30px rgba(212,175,55,0.5))",
-          opacity: visible ? 1 : 0,
-          transform: visible ? "scale(1) rotate(0deg)" : "scale(0.5) rotate(-15deg)",
-          transition: "opacity 1.2s cubic-bezier(0.16,1,0.3,1), transform 1.2s cubic-bezier(0.16,1,0.3,1)",
-        }}
-      >
-        <circle cx="50" cy="50" r="48" fill="none" stroke="#D4AF37" strokeWidth="1.5" opacity="0.5" />
-        <circle cx="50" cy="50" r="42" fill="rgba(212,175,55,0.08)" />
-        <path
-          d="M10,65 L25,35 L35,50 L50,20 L65,50 L75,35 L90,65 Z"
-          fill="rgba(192,57,43,0.2)"
-          stroke="#D4AF37"
-          strokeWidth="1.8"
-          strokeLinejoin="round"
-        />
-        <circle cx="50" cy="50" r="8" fill="none" stroke="#D4AF37" strokeWidth="1.5" />
-        <circle cx="50" cy="50" r="4" fill="#D4AF37" opacity="0.8" />
-        <circle cx="50" cy="12" r="2" fill="#D4AF37" />
-        <circle cx="20" cy="30" r="1.5" fill="#D4AF37" opacity="0.5" />
-        <circle cx="80" cy="30" r="1.5" fill="#D4AF37" opacity="0.5" />
-        <line x1="10" y1="65" x2="90" y2="65" stroke="#D4AF37" strokeWidth="1" opacity="0.5" />
-      </svg>
+      <img src={nepalFlag} alt="Emblem" className="w-22 h-22 rounded-full mt-2 z-2" />
 
       {/* ── Top Divider ── */}
       <div
@@ -149,7 +123,7 @@ export default function IntroPage({ onEnter }) {
 
       {/* ── Message Box ── */}
       <div
-        className="relative mt-8 z-10 text-center rounded-sm"
+        className="relative mt-2 z-10 text-center rounded-sm"
         style={{
           maxWidth: 660,
           width: "100%",
