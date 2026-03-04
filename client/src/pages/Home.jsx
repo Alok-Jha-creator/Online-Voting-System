@@ -6,6 +6,35 @@ export default function Home() {
   const navigate = useNavigate();
 
   // ── Real-time clock ──
+  const getNepaliDate = (date) => {
+  const nepaliMonths = [
+    "बैशाख","जेठ","असार","श्रावण","भाद्र","आश्विन",
+    "कार्तिक","मंसिर","पुष","माघ","फाल्गुन","चैत्र"
+  ];
+  const nepaliDays = [
+    "आइतबार","सोमबार","मंगलबार","बुधबार",
+    "बिहीबार","शुक्रबार","शनिबार"
+  ];
+
+  // English to Nepali date conversion (approximate +56 years +8 months)
+  const engYear  = date.getFullYear();
+  const engMonth = date.getMonth(); // 0-11
+  const engDay   = date.getDate();
+  const dayName  = nepaliDays[date.getDay()];
+
+  // Approximate BS year
+  let bsYear  = engYear + 56;
+  let bsMonth = engMonth + 9; // shift by ~8.5 months
+  let bsDay   = engDay + 17;
+
+  if (bsMonth >= 12) { bsMonth -= 12; bsYear += 1; }
+  if (bsDay > 30)    { bsDay -= 30;   bsMonth += 1; }
+  if (bsMonth >= 12) { bsMonth -= 12; bsYear += 1; }
+
+  return `${toNepali(bsYear)} ${nepaliMonths[bsMonth]} ${toNepali(bsDay)}, ${dayName}`;
+};
+
+
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
@@ -108,9 +137,9 @@ export default function Home() {
           <div className="flex flex-col items-center gap-2 mt-2">
 
             {/* मिति */}
-            <p style={{ color: "#D4AF37", fontSize: "1.05rem", letterSpacing: "2px" }}>
-              📅 &nbsp; २०८१ मंसिर १५, सोमबार
-            </p>
+           <p style={{ color: "#D4AF37", fontSize: "1.05rem", letterSpacing: "2px" }}>
+               📅&nbsp; {getNepaliDate(time)}
+           </p>
 
             {/* घडी */}
             <div>
@@ -187,7 +216,7 @@ export default function Home() {
       >
         {[
           { number: "१७५",      label: "निर्वाचन क्षेत्र" },
-          { number: "१८१६८२३०", label: "करोड मतदाता" },
+          { number: "१८१६८२३०", label: "कुल मतदाता" },
           { number: "१२०+",     label: "दल सहभागी" },
           { number: "१००%",     label: "सुरक्षित एन्क्रिप्टेड" },
         ].map((stat, i) => (
