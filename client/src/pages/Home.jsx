@@ -1,12 +1,30 @@
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Mountain from "../assets/image (5).jpg";
 
 export default function Home() {
   const navigate = useNavigate();
 
+  // ── Real-time clock ──
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // अंग्रेजी number → नेपाली
+  const toNepali = (n) => {
+    const digits = ["०","१","२","३","४","५","६","७","८","९"];
+    return String(n).padStart(2, "0").split("").map(d => digits[d] ?? d).join("");
+  };
+
+  const hours = toNepali(time.getHours());
+  const mins  = toNepali(time.getMinutes());
+  const secs  = toNepali(time.getSeconds());
+
   return (
     <>
-      {/* ✅ Section सही ठाउँमा बन्द हुन्छ */}
       <section
         className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden"
         style={{
@@ -23,9 +41,15 @@ export default function Home() {
             0%, 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0.4); }
             50%       { box-shadow: 0 0 0 8px rgba(212,175,55,0); }
           }
-          .badge-pulse { animation: badgePulse 2.8s ease infinite; }
+          @keyframes colonBlink {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0.3; }
+          }
+          .badge-pulse  { animation: badgePulse 2.8s ease infinite; }
+          .colon-blink  { animation: colonBlink 1s ease infinite; }
         `}</style>
 
+        {/* Background pattern */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -36,6 +60,7 @@ export default function Home() {
 
         <div className="text-center max-w-3xl relative z-10">
 
+          {/* Badge */}
           <div
             className="inline-flex items-center gap-2 px-5 py-2 rounded-full mb-8 badge-pulse"
             style={{
@@ -49,6 +74,7 @@ export default function Home() {
             🗳️ &nbsp; अनलाइन मतदान खुला छ
           </div>
 
+          {/* Heading */}
           <h1
             className="mb-6 leading-snug"
             style={{
@@ -65,6 +91,7 @@ export default function Home() {
             <span style={{ color: "#D4AF37" }}>बनाउनुहोस्</span>
           </h1>
 
+          {/* Description */}
           <p
             className="mb-10 leading-relaxed mx-auto"
             style={{
@@ -77,27 +104,86 @@ export default function Home() {
             आफ्नो मतदाता परिचयपत्र प्रयोग गरी सुरक्षित तरिकाले मतदान गर्नुहोस्।
           </p>
 
-          <div className="flex flex-wrap gap-4 justify-center">
-            <PrimaryBtn onClick={() => navigate("/vote")}>
-              अहिले मतदान गर्नुहोस्
-            </PrimaryBtn>
-            <SecondaryBtn onClick={() => navigate("/how-to")}>
-              कसरी मतदान गर्ने?
-            </SecondaryBtn>
+          {/* ── Clock (buttons को ठाउँमा) ── */}
+          <div className="flex flex-col items-center gap-2 mt-2">
+
+            {/* मिति */}
+            <p style={{ color: "#D4AF37", fontSize: "1.05rem", letterSpacing: "2px" }}>
+              📅 &nbsp; २०८१ मंसिर १५, सोमबार
+            </p>
+
+            {/* घडी */}
+            <div>
+              {/* घण्टा */}
+              <span
+                style={{
+                  fontFamily: "'Tiro Devanagari Hindi', serif",
+                  fontSize: "clamp(2.2rem, 2vw, 1.5rem)",
+                  color: "#fff",
+                  letterSpacing: "4px",
+                  minWidth: "2ch",
+                  textAlign: "center",
+                }}
+              >
+                {hours}
+              </span>
+
+              <span
+                className="colon-blink"
+                style={{ color: "#D4AF37", fontSize: "1.8rem", lineHeight: 1 }}
+              >
+                :
+              </span>
+
+              {/* मिनेट */}
+              <span
+                style={{
+                  fontFamily: "'Tiro Devanagari Hindi', serif",
+                  fontSize: "clamp(2.2rem, 2vw, 1.5rem)",
+                  color: "#fff",
+                  letterSpacing: "4px",
+                  minWidth: "2ch",
+                  textAlign: "center",
+                }}
+              >
+                {mins}
+              </span>
+
+              <span
+                className="colon-blink"
+                style={{ color: "#D4AF37", fontSize: "1.8rem", lineHeight: 1 }}
+              >
+                :
+              </span>
+
+              {/* सेकेन्ड */}
+              <span
+                style={{
+                  fontFamily: "'Tiro Devanagari Hindi', serif",
+                  fontSize: "clamp(2.2rem, 2vw, 1.5rem)",
+                  color: "#D4AF37",
+                  letterSpacing: "4px",
+                  minWidth: "4ch",
+                  textAlign: "center",
+                }}
+              >
+                {secs}
+              </span>
+            </div>
+
           </div>
-
         </div>
-      </section>  {/* ✅ Section यहाँ बन्द */}
+      </section>
 
-      {/* ✅ Stats Bar — Section बाहिर */}
+      {/* Stats Bar */}
       <div
-       className="w-full grid grid-cols-2 md:grid-cols-4 gap-0"
-  style={{
-    backgroundImage: `linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.60)), url("${Mountain}")`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-  }}
+        className="w-full grid grid-cols-2 md:grid-cols-4 gap-0"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.60)), url("${Mountain}")`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
       >
         {[
           { number: "१७५",      label: "निर्वाचन क्षेत्र" },
@@ -136,64 +222,5 @@ export default function Home() {
         ))}
       </div>
     </>
-  );
-}
-
-function PrimaryBtn({ onClick, children }) {
-  return (
-    <button
-      onClick={onClick}
-      className="px-10 py-4 font-bold rounded-sm cursor-pointer"
-      style={{
-        background: "#C0392B",
-        color: "#fff",
-        border: "none",
-        fontFamily: "'Noto Sans Devanagari', sans-serif",
-        fontSize: "1rem",
-        letterSpacing: "1px",
-        boxShadow: "0 4px 20px rgba(192,57,43,0.45)",
-        transition: "background 0.25s, transform 0.25s, box-shadow 0.25s",
-      }}
-      onMouseEnter={(e) => {
-        e.target.style.background = "#922B21";
-        e.target.style.transform = "translateY(-2px)";
-        e.target.style.boxShadow = "0 8px 30px rgba(192,57,43,0.55)";
-      }}
-      onMouseLeave={(e) => {
-        e.target.style.background = "#C0392B";
-        e.target.style.transform = "translateY(0)";
-        e.target.style.boxShadow = "0 4px 20px rgba(192,57,43,0.45)";
-      }}
-    >
-      {children}
-    </button>
-  );
-}
-
-function SecondaryBtn({ onClick, children }) {
-  return (
-    <button
-      onClick={onClick}
-      className="px-10 py-4 font-semibold rounded-sm cursor-pointer"
-      style={{
-        background: "transparent",
-        color: "#D4AF37",
-        border: "2px solid #D4AF37",
-        fontFamily: "'Noto Sans Devanagari', sans-serif",
-        fontSize: "1rem",
-        letterSpacing: "1px",
-        transition: "background 0.25s, transform 0.25s",
-      }}
-      onMouseEnter={(e) => {
-        e.target.style.background = "rgba(212,175,55,0.1)";
-        e.target.style.transform = "translateY(-2px)";
-      }}
-      onMouseLeave={(e) => {
-        e.target.style.background = "transparent";
-        e.target.style.transform = "translateY(0)";
-      }}
-    >
-      {children}
-    </button>
   );
 }
