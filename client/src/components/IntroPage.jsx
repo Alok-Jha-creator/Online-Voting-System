@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const particles = Array.from({ length: 25 }, (_, i) => ({
   id: i,
@@ -224,7 +225,7 @@ export default function IntroPage({ onEnter }) {
 function EnterButton({ visible, onEnter }) {
   const [hovered, setHovered] = useState(false);
 
-  return (
+  return ( <Link to="/home">
     <button
       onClick={onEnter}
       onMouseEnter={() => setHovered(true)}
@@ -240,9 +241,11 @@ function EnterButton({ visible, onEnter }) {
         transition: "background 0.3s, color 0.3s, opacity 1s ease 2s, transform 1s ease 2s",
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(20px)",
+
       }}
     >
       मतदानमा प्रवेश गर्नुहोस् &nbsp;→
     </button>
+    </Link>
   );
 }

@@ -1,18 +1,14 @@
-import { useState } from "react";
 import IntroPage from "./components/IntroPage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 
 export default function App() {
-  const [showIntro, setShowIntro] = useState(true);
-
   return (
-    <div>
-      {showIntro ? (
-        <IntroPage onEnter={() => setShowIntro(false)} />
-      ) : (
-        <div className="text-white text-center mt-20 text-2xl">
-          🗳️ यहाँ तपाईंको Main Page आउँछ
-        </div>
-      )}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<IntroPage />} />
+        <Route path="/home" element={<Home />} />
+      </Routes>
+    </Router>
   );
 }
