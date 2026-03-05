@@ -12,3 +12,5 @@ Home page
 
 
 <img width="1357" height="608" alt="Screenshot 2026-03-06 000551" src="https://github.com/user-attachments/assets/8c0f45f1-48be-4551-800d-eb0ed75eefd5" />
+<img width="1364" height="603" alt="Screenshot 2026-03-06 000724" src="https://github.com/user-attachments/assets/6feb1e6b-f0dc-4e17-b2fd-fc5dd1d61172" />
+
