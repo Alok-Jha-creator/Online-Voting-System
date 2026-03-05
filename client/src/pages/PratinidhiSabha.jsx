@@ -394,9 +394,6 @@ export default function PratinidhiSabha() {
                   { label: "कुल निर्वाचन क्षेत्र", val: "१६५"        },
                   { label: "कुल जिल्ला",            val: "७७"         },
                   { label: "कुल प्रदेश",             val: "७"          },
-                  { label: "औसत मतदाता/क्षेत्र",    val: "~१,०९,०९०" },
-                  { label: "सबैभन्दा ठूलो क्षेत्र", val: "काठमाडौं-१" },
-                  { label: "सबैभन्दा सानो क्षेत्र", val: "मुस्ताङ"    },
                 ].map((r) => (
                   <div
                     key={r.label}
