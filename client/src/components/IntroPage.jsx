@@ -65,11 +65,11 @@ export default function IntroPage({ onEnter }) {
       </div>
 
       {/* ── Emblem ── */}
-      <img src={nepalFlag} alt="Emblem" className="w-22 h-22 rounded-full mt-2 z-2" />
+      <img src={nepalFlag} alt="Emblem" className="w-12 h-12 rounded-full px-1 py-1 mt-2 z-2" />
 
       {/* ── Top Divider ── */}
       <div
-        className="h-px my-2 z-10"
+        className="h-px my-2 mt-2 z-10"
         style={{
           width: visible ? 340 : 0,
           maxWidth: "90vw",
