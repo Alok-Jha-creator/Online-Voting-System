@@ -6,4 +6,7 @@ Home page
 
 <img width="1351" height="628" alt="image" src="https://github.com/user-attachments/assets/d6d05651-410a-4f8c-87ba-9109c5f747a4" />
 
+<img width="1352" height="544" alt="image" src="https://github.com/user-attachments/assets/ba6f1085-e0f1-4c87-b43d-1d83e17bbad4" />
+
+
 <img width="1353" height="377" alt="image" src="https://github.com/user-attachments/assets/24228ea7-b7bb-443c-b71b-870fbfa662a6" />
