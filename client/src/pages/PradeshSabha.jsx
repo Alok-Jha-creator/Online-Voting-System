@@ -336,12 +336,12 @@ export default function PradeshSabha() {
 
       {/* ── Hero Banner ── */}
       <div
-        className="relative overflow-hidden h-screen py-20 px-6 text-center flex items-center justify-center"
+        className="relative overflow-hidden rounded-lg h-screen py-20 px-6 text-center flex items-center justify-center"
         style={{
           background: `linear-gradient(rgba(10,14,26,0.65), rgba(10,14,26,0.85)), url("${SLIDES[currentSlide]}")`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          minHeight: "40vh",
+          minHeight: "10vh",
           transition: "background-image 0.8s ease-in-out",
         }}
       >
@@ -540,7 +540,7 @@ export default function PradeshSabha() {
                   onMouseLeave={(e) => (e.currentTarget.style.background = i % 2 === 0 ? "rgba(255,255,255,0.02)" : "rgba(255,255,255,0.04)")}
                 >
                   <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: p.color }} />
+                    <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: p.color }} />
                     <span style={{ color: "#FDFAF5", fontSize: "0.88rem", fontWeight: 600 }}>{p.name}</span>
                   </div>
                   <span className="text-center" style={{ color: "#C0392B", fontWeight: 700 }}>{p.pratyaksha}</span>
