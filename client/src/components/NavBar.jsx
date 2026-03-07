@@ -101,7 +101,7 @@ export default function Navbar() {
           <div style={{
             width: 42, height: 42,
             borderRadius: "50%",
-            border: "2px solid #D4AF37",
+            border: "1px solid #888371ff",
             overflow: "hidden",
             flexShrink: 0,
             boxShadow: "0 0 12px rgba(212,175,55,0.3)",
@@ -115,7 +115,7 @@ export default function Navbar() {
               color: "#D4AF37",
               marginBottom: 3,
             }}>
-              निर्वाचन आयोग
+              निर्वाचन आयोग नेपाल
             </span>
             <span style={{
               fontSize: "0.55rem",
@@ -156,8 +156,8 @@ export default function Navbar() {
                 fontSize: "0.85rem",
                 fontFamily: "'Noto Sans Devanagari', sans-serif",
                 fontWeight: 600,
-                boxShadow: "0 3px 14px rgba(192,57,43,0.4)",
-                border: "1px solid rgba(255,100,80,0.2)",
+                boxShadow: "0 3px 14px rgba(241, 40, 18, 0.4)",
+                border: "1px solid rgba(141, 60, 49, 0.2)",
                 transition: "all 0.2s",
                 whiteSpace: "nowrap",
               }}
@@ -227,7 +227,7 @@ export default function Navbar() {
                 {l.label}
               </Link>
             ))}
-            <div style={{ height:1, background:"rgba(212,175,55,0.15)", margin:"6px 0" }} />
+            <div style={{ height:1, background:"rgba(197, 196, 190, 0.15)", margin:"8px 0" }} />
             <Link
               to="/vote"
               onClick={() => setMenuOpen(false)}
