@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import NepalFlag from "../assets/nepal-flag.png";
+import About from "../pages/about";
 
 const NAV_LINKS = [
   { label: "गृहपृष्ठ",          to: "/home"    },
-  { label: "मतदान गर्नुहोस्",   to: "/vote"    },
+  { label: "जानकारी",   to: "/about"    },
   { label: "कसरी मतदान गर्ने?", to: "/how-to"  },
   { label: "परिणाम",             to: "/results" },
 ];
@@ -142,7 +143,7 @@ export default function Navbar() {
           {/* CTA Button */}
           <li style={{ listStyle:"none" }}>
             <Link
-              to="/vote"
+              to="/about"
               className="vote-cta"
               style={{
                 display: "inline-flex",
