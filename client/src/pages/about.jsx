@@ -48,7 +48,7 @@ const About = () => {
 
       {/* Hero Section */}
       <div style={{
-        background: 'linear-gradient(135deg, #0d3b6e 0%, #1a5276 50%, #0d3b6e 100%)',
+        background: 'linear-gradient(134deg, #0d3b6e 0%, #1a5276 50%, #0d3b6e 100%)',
         color: 'white',
         padding: '60px 40px',
         textAlign: 'center',
